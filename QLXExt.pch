@@ -1,0 +1,90 @@
+//
+//  fcuhConsumer-Prefix.pch
+//  fcuhConsumer
+//
+//  Created by 陈永楚 on 15/5/28.
+//  Copyright (c) 2015年 陈永楚. All rights reserved.
+//
+
+#ifndef QLXExt_pch
+#define QLXExt_pch
+
+#import <UIKit/UIKit.h>
+#import "HttpRequestTool.h"
+#import "ATHttpRequestDefine.h"
+#import "QLXExt.h"
+#import "MJExtension.h"
+
+
+#ifdef DEBUG // 调试状态, 打开LOG功能
+#define FCLog(...) NSLog(__VA_ARGS__)
+#else // 发布状态, 关闭LOG功能
+#define FCLog(...)
+#endif
+
+#define AFNETWORKING_ALLOW_INVALID_SSL_CERTIFICATES
+
+#define iOS7More ([[UIDevice currentDevice].systemVersion doubleValue] > 7.0)
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] < 8.0)
+#define iOS8 ([[UIDevice currentDevice].systemVersion doubleValue] >= 8.0)
+
+// 通知中心
+#define HWNotificationCenter [NSNotificationCenter defaultCenter]
+
+// RGB颜色
+#define HWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+//颜色和透明度设置
+#define HWColorAlpha(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
+
+// 随机色
+#define HWRandomColor HWColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
+//屏幕的宽&高
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kScreenWidth  [UIScreen mainScreen].bounds.size.width
+
+//通知
+#define NotificationCenter [NSNotificationCenter defaultCenter]
+
+//根据屏幕宽度伸缩比例获取同比例伸缩后的值
+#define kAutoScreenWidth(value) [AutoDimension autoDimensioniPhone6Width:value]
+#define kAutoScreenHeight(value) [AutoDimension autoDimensioniPhone6Height:value]
+
+//字体大小
+#define kFont(value) [UIFont systemFontOfSize:kAutoScreenWidth(value)]
+#define kBFont(value) [UIFont boldSystemFontOfSize:kAutoScreenWidth(value)]
+
+//分割线颜色
+#define kLineColor [UIColor colorFromCycRGB:@"d0d0d0"]
+
+//int转字符串
+#define kIntString(name) [NSString stringWithFormat:@"%d",name]
+
+//NSString转NSURL
+#define kURL(value) [NSURL URLWithString:value]
+
+//NSString转NSURL
+#define kImage(value) [UIImage imageNamed:value]
+
+//分页拉取每一个返回的个数
+#define kOnePageNum 15
+
+//是否已经登录
+#define KLoginToken [ATUserInfoData defaultUserInfoData].loginToken
+
+//是否为4inch
+#define three_5Inch ([UIScreen mainScreen].bounds.size.height == 480)
+#define fourInch ([UIScreen mainScreen].bounds.size.height == 568)
+#define fiveInch ([UIScreen mainScreen].bounds.size.height == 667)
+#define five_5Inch ([UIScreen mainScreen].bounds.size.height == 736)
+
+#define kNavBarAndStatusBar 64
+#define kNavBar 44
+#define kStatusBar 20
+#define KAnimateDuration 0.3
+#define kCommonMagin kAutoScreenWidth(15)
+
+#define UIViewAutoresizingAllMasks (UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth)
+
+#endif
